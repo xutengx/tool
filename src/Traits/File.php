@@ -3,7 +3,7 @@
 declare(strict_types = 1);
 namespace Xutengx\Tool\Traits;
 
-use Exception;
+use InvalidArgumentException;
 
 /**
  * 文件操作
@@ -63,7 +63,7 @@ trait File {
 			return $arr;
 		}
 		else
-			throw new Exception("$dirName is not readable path!");
+			throw new InvalidArgumentException("[$dirName] is not readable path!");
 	}
 
 	/**
