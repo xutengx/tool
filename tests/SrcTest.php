@@ -145,6 +145,18 @@ final class SrcTest extends TestCase {
 		$this->assertEquals(2, count($tool::getFiles($this->dir)));
 	}
 
+
+	public function testRecursiveMakeDirectory(){
+		$this->assertInstanceOf(Tool::class, $tool = new Tool);
+
+		$dir = $this->dir.'/forTest/ddd/aa/rrr';
+		$this->assertTrue($tool::recursiveMakeDirectory($dir), '递归创建不存在的目录');
+		$this->assertDirectoryExists($dir);
+		$this->assertTrue($tool::recursiveMakeDirectory($dir), '递归创建已存在的目录');
+		$this->assertDirectoryExists($dir);
+
+	}
+
 	public function testRecursiveDeleteDirectory() {
 		$this->assertInstanceOf(Tool::class, $tool = new Tool);
 

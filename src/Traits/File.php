@@ -48,7 +48,7 @@ trait File {
 	 * 返回文件夹下的所有文件 组成的一维数组
 	 * @param string $dirName 文件夹路径(绝对)
 	 * @return array 一维数组
-	 * @throws Exception
+	 * @throws InvalidArgumentException
 	 */
 	public static function getFiles(string $dirName = ''): array {
 		$dirName = rtrim($dirName, '/');
@@ -84,7 +84,8 @@ trait File {
 	 * @return bool
 	 */
 	public static function recursiveMakeDirectory(string $dir, int $mode = 0777): bool {
-		return (is_dir(dirname($dir)) || static::recursiveMakeDirectory(dirname($dir))) ? mkdir($dir, $mode) : true;
+//		return (is_dir(dirname($dir)) || static::recursiveMakeDirectory(dirname($dir))) ? mkdir($dir, $mode) : true;
+		return is_dir($dir) ? true : mkdir($dir, $mode, true);
 	}
 
 }
