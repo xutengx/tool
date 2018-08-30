@@ -121,7 +121,7 @@ final class SrcTest extends TestCase {
 
 	public function testFilePutContents() {
 		$this->assertInstanceOf(Tool::class, $tool = new Tool);
-		$dir     = $this->dir . '/test/rtt/asd/';
+		$dir     = $this->dir . 'test/rtt/asd/';
 		$textOld = 'test123123';
 		$text    = 'test';
 
@@ -149,7 +149,7 @@ final class SrcTest extends TestCase {
 	public function testRecursiveMakeDirectory(){
 		$this->assertInstanceOf(Tool::class, $tool = new Tool);
 
-		$dir = $this->dir.'/forTest/ddd/aa/rrr';
+		$dir = $this->dir.'forTest/ddd/aa/rrr';
 		$this->assertTrue($tool::recursiveMakeDirectory($dir), '递归创建不存在的目录');
 		$this->assertDirectoryExists($dir);
 		$this->assertTrue($tool::recursiveMakeDirectory($dir), '递归创建已存在的目录');

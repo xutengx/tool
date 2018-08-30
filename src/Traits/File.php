@@ -39,8 +39,7 @@ trait File {
 	 */
 	public static function filePutContents(string $filename, string $text, int $lockType = LOCK_EX): bool {
 		if (!is_file($filename))
-			if (is_dir(dirname($filename)) || static::recursiveMakeDirectory(dirname($filename)))
-				touch($filename);
+			static::recursiveMakeDirectory(dirname($filename)) && touch($filename);
 		return file_put_contents($filename, $text, $lockType) === false ? false : true;
 	}
 
@@ -84,7 +83,6 @@ trait File {
 	 * @return bool
 	 */
 	public static function recursiveMakeDirectory(string $dir, int $mode = 0777): bool {
-//		return (is_dir(dirname($dir)) || static::recursiveMakeDirectory(dirname($dir))) ? mkdir($dir, $mode) : true;
 		return is_dir($dir) ? true : mkdir($dir, $mode, true);
 	}
 
